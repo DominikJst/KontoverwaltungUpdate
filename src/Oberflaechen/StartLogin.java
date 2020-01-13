@@ -13,6 +13,8 @@ public class StartLogin extends JFrame {
 
         add(panel1);
         setSize(500, 400);
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        setTitle("Login");
         loginButton.addActionListener(new ActionListener() {
 
 

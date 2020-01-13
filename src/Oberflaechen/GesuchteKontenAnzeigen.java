@@ -14,6 +14,7 @@ public class GesuchteKontenAnzeigen extends JFrame{
         add(panel1);
         setSize(500, 600);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        setTitle("Gesuchte Konten");
 
 
 

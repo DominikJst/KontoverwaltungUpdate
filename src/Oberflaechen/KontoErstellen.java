@@ -20,6 +20,7 @@ public class KontoErstellen extends JFrame {
         add(panel1);
         setSize(400, 300);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        setTitle("Konto erstellen");
 
         erstellenButton.addActionListener(new ActionListener() {
             @Override
@@ -27,11 +28,10 @@ public class KontoErstellen extends JFrame {
                 try{
                 String kontoname = kontonameField.getText();
                 double kontostand = Double.parseDouble(kontostandField.getText());
-                int id = (listOfKonten.size() + 1);
 
                 if(listOfKonten.size() == 0){
                     int kontonummer = Integer.parseInt(kontonumerField.getText());
-                    KontoObject object = new KontoObject(kontonummer, kontoname, kontostand, id);
+                    KontoObject object = new KontoObject(kontonummer, kontoname, kontostand, 1);
 
                     listOfKonten.add(object);
                     dispose();
@@ -46,6 +46,7 @@ public class KontoErstellen extends JFrame {
 
                         } else if (i == (listOfKonten.size() - 1) && Integer.parseInt(kontonumerField.getText()) != listOfKonten.get(i).getKontonummer()) {
                             int kontonummer = Integer.parseInt(kontonumerField.getText());
+                            int id = listOfKonten.get(listOfKonten.size() - 1).getId() + 1;
                             KontoObject object = new KontoObject(kontonummer, kontoname, kontostand, id);
                             listOfKonten.add(object);
                             dispose();
@@ -59,6 +60,7 @@ public class KontoErstellen extends JFrame {
 
                 }catch(Exception e){
                    JOptionPane.showMessageDialog( null, "Bitte valide Eingaben treffen!", "Warnung!", JOptionPane.ERROR_MESSAGE);
+                    System.out.println(e);
                 }
         }
     });

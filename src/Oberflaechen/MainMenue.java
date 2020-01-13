@@ -23,6 +23,8 @@ public class MainMenue extends JFrame{
     private JButton kontenAktualisieren;
     private JButton anwendungBeenden;
     public JTextArea textArea1;
+    private JButton einzahlenButton;
+    private JButton auszahlenButton;
     StringBuilder string = new StringBuilder();
 
 
@@ -31,6 +33,7 @@ public class MainMenue extends JFrame{
         add(panel1);
         setSize(600, 500);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        setTitle("Menü");
 
         // Konten erstellen
         kontoErstellen.addActionListener(new ActionListener() {
@@ -141,6 +144,23 @@ public class MainMenue extends JFrame{
             public void actionPerformed(ActionEvent actionEvent) {
                 Collections.sort(listOfKonten, Comparator.comparingDouble((KontoObject o) -> o.kontostand));
                 Collections.reverse(listOfKonten);
+            }
+        });
+        einzahlenButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+
+                GeldEinzahlen einzahlen = new GeldEinzahlen();
+                einzahlen.setVisible(true);
+
+            }
+        });
+        auszahlenButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+
+                GeldAuszahlen auszahlen = new GeldAuszahlen();
+                auszahlen.setVisible(true);
             }
         });
     }

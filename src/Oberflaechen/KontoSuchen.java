@@ -18,6 +18,7 @@ public class KontoSuchen extends JFrame{
         add(panel1);
         setSize(400, 300);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        setTitle("Konto suchen");
 
         suchenButton.addActionListener(new ActionListener() {
             @Override
