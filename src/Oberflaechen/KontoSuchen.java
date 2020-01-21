@@ -10,6 +10,7 @@ public class KontoSuchen extends JFrame{
     private JTextField kontonummerField;
     private JButton suchenButton;
     private JPanel panel1;
+    private JTextField idField;
     StringBuilder string = new StringBuilder();
 
 
@@ -24,16 +25,27 @@ public class KontoSuchen extends JFrame{
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 try {
-                    if (!kontonameField.getText().isEmpty() && !kontonummerField.getText().isEmpty()) {
+                    int check = 0;
+
+                    if (!kontonameField.getText().isEmpty() && !kontonummerField.getText().isEmpty() && !idField.getText().isEmpty()) {
 
                         String kontoname = kontonameField.getText();
                         int kontonummer = Integer.parseInt(kontonummerField.getText());
+                        int id = Integer.parseInt(idField.getText());
 
                         for (int i = 0; i < listOfKonten.size(); i++) {
 
-                            if (listOfKonten.get(i).getName().equals(kontoname) && listOfKonten.get(i).getKontonummer() == kontonummer) {
+                            if (listOfKonten.get(i).getName().equals(kontoname) && listOfKonten.get(i).getKontonummer() == kontonummer && listOfKonten.get(i).getId() == id) {
                                 string.append("\n" + "  ID: " + listOfKonten.get(i).getId() + "\n" + "  Kontonummer: " + listOfKonten.get(i).getKontonummer() + "\n" + "  Kontoname: " + listOfKonten.get(i).getName() + "\n" + "  Kontostand: " + listOfKonten.get(i).getKontostand() + "\n" + "  ---------------");
+                                check = 1;
                             }
+                        }
+
+                        if(check != 1){
+                            JOptionPane.showMessageDialog( null, "Das Konto existiert nicht!", "Warnung!", JOptionPane.ERROR_MESSAGE);
+                        }
+                        else{
+                            Ausgabe();
                         }
 
 
@@ -45,7 +57,15 @@ public class KontoSuchen extends JFrame{
 
                             if (listOfKonten.get(i).getName().equals(kontoname)) {
                                 string.append("\n" + "  ID: " + (i + 1) + "\n" + "  Kontonummer: " + listOfKonten.get(i).getKontonummer() + "\n" + "  Kontoname: " + listOfKonten.get(i).getName() + "\n" + "  Kontostand: " + listOfKonten.get(i).getKontostand() + "\n" + "  ---------------");
+                                check = 1;
                             }
+                        }
+
+                        if(check != 1){
+                            JOptionPane.showMessageDialog( null, "Das Konto existiert nicht!", "Warnung!", JOptionPane.ERROR_MESSAGE);
+                        }
+                        else{
+                            Ausgabe();
                         }
 
 
@@ -57,25 +77,55 @@ public class KontoSuchen extends JFrame{
 
                             if (listOfKonten.get(i).getKontonummer() == kontonummer) {
                                 string.append("\n" + "  ID: " + (i + 1) + "\n" + "  Kontonummer: " + listOfKonten.get(i).getKontonummer() + "\n" + "  Kontoname: " + listOfKonten.get(i).getName() + "\n" + "  Kontostand: " + listOfKonten.get(i).getKontostand() + "\n" + "  ---------------");
+                                check = 1;
                             }
                         }
 
+                        if(check != 1){
+                            JOptionPane.showMessageDialog( null, "Das Konto existiert nicht!", "Warnung!", JOptionPane.ERROR_MESSAGE);
+                        }
+                        else{
+                            Ausgabe();
+                        }
 
+                    }else if (!idField.getText().isEmpty()) {
+
+                        int id = Integer.parseInt(idField.getText());
+
+                        for (int i = 0; i < listOfKonten.size(); i++) {
+
+                            if (listOfKonten.get(i).getId() == id) {
+                                string.append("\n" + "  ID: " + (i + 1) + "\n" + "  Kontonummer: " + listOfKonten.get(i).getKontonummer() + "\n" + "  Kontoname: " + listOfKonten.get(i).getName() + "\n" + "  Kontostand: " + listOfKonten.get(i).getKontostand() + "\n" + "  ---------------");
+                                check = 1;
+                            }
+                        }
+
+                        if (check != 1) {
+                            JOptionPane.showMessageDialog(null, "Das Konto existiert nicht!", "Warnung!", JOptionPane.ERROR_MESSAGE);
+                        } else {
+                            Ausgabe();
+                        }
                     }
 
-                    dispose();
 
-                    GesuchteKontenAnzeigen kontenAnzeigen = new GesuchteKontenAnzeigen();
-                    kontenAnzeigen.setVisible(true);
-                    kontenAnzeigen.Anzeigen(string.toString());
 
-                }catch(Exception a){
+
+
+                    }catch(Exception a){
                     JOptionPane.showMessageDialog( null, "Bitte valide Eingaben treffen!", "Warnung!", JOptionPane.ERROR_MESSAGE);
                 }
 
             }
         });
 
+    }
+
+    public void Ausgabe(){
+
+        GesuchteKontenAnzeigen kontenAnzeigen = new GesuchteKontenAnzeigen();
+        kontenAnzeigen.setVisible(true);
+        kontenAnzeigen.Anzeigen(string.toString());
+        dispose();
     }
 
 

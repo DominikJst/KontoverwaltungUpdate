@@ -34,6 +34,7 @@ public class KontoErstellen extends JFrame {
                     KontoObject object = new KontoObject(kontonummer, kontoname, kontostand, 1);
 
                     listOfKonten.add(object);
+                    JOptionPane.showMessageDialog(null, "Das Konto wurde erstellt!", "Einzahlung erfolgt!", JOptionPane.INFORMATION_MESSAGE);
                     dispose();
 
                 }else{
@@ -49,9 +50,9 @@ public class KontoErstellen extends JFrame {
                             int id = listOfKonten.get(listOfKonten.size() - 1).getId() + 1;
                             KontoObject object = new KontoObject(kontonummer, kontoname, kontostand, id);
                             listOfKonten.add(object);
+                            JOptionPane.showMessageDialog(null, "Das Konto wurde erstellt!", "Einzahlung erfolgt!", JOptionPane.INFORMATION_MESSAGE);
                             dispose();
                             break;
-
                         }
 
                     }
@@ -60,7 +61,7 @@ public class KontoErstellen extends JFrame {
 
                 }catch(Exception e){
                    JOptionPane.showMessageDialog( null, "Bitte valide Eingaben treffen!", "Warnung!", JOptionPane.ERROR_MESSAGE);
-                    System.out.println(e);
+
                 }
         }
     });

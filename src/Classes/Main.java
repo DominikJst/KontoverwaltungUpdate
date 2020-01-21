@@ -1,18 +1,15 @@
 package Classes;
 
-import Oberflaechen.StartLogin;
+import Oberflaechen.MainMenue;
 
 import javax.swing.*;
 
 public class Main {
 
     public static void main(String []args){
-
-          //        ******* Made by Dominik Jost *******        //
-
-        StartLogin login = new StartLogin();
+        MainMenue login = new MainMenue();
         login.setVisible(true);
         login.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-        login.setTitle("Login");
+        login.setTitle("Menü");
     }
 }

@@ -32,8 +32,6 @@ public class MainMenue extends JFrame{
 
         add(panel1);
         setSize(600, 500);
-        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        setTitle("Menü");
 
         // Konten erstellen
         kontoErstellen.addActionListener(new ActionListener() {
@@ -42,7 +40,6 @@ public class MainMenue extends JFrame{
 
                 KontoErstellen accErstellen = new KontoErstellen();
                 accErstellen.setVisible(true);
-
             }
         });
 
@@ -53,7 +50,6 @@ public class MainMenue extends JFrame{
 
                 KontoLoeschen loeschen = new KontoLoeschen();
                 loeschen.setVisible(true);
-
             }
         });
 
@@ -118,6 +114,7 @@ public class MainMenue extends JFrame{
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 Collections.sort(listOfKonten, (KontoObject o1, KontoObject o2) -> CharSequence.compare(o1.name, o2.name));
+                JOptionPane.showMessageDialog(null, "Konten wurden aufsteigend nach Name sortiert! Bitte aktualisieren!", "Einzahlung erfolgt!", JOptionPane.INFORMATION_MESSAGE);
             }
         });
 
@@ -127,6 +124,7 @@ public class MainMenue extends JFrame{
             public void actionPerformed(ActionEvent actionEvent) {
                 Collections.sort(listOfKonten, (KontoObject o1, KontoObject o2) -> CharSequence.compare(o1.name, o2.name));
                 Collections.reverse(listOfKonten);
+                JOptionPane.showMessageDialog(null, "Konten wurden absteigend nach Name sortiert! Bitte aktualisieren!", "Einzahlung erfolgt!", JOptionPane.INFORMATION_MESSAGE);
             }
         });
 
@@ -135,6 +133,7 @@ public class MainMenue extends JFrame{
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 Collections.sort(listOfKonten, Comparator.comparingDouble((KontoObject o) -> o.kontostand));
+                JOptionPane.showMessageDialog(null, "Konten wurden aufsteigend nach Kontostand sortiert! Bitte aktualisieren!", "Einzahlung erfolgt!", JOptionPane.INFORMATION_MESSAGE);
             }
         });
 
@@ -144,6 +143,7 @@ public class MainMenue extends JFrame{
             public void actionPerformed(ActionEvent actionEvent) {
                 Collections.sort(listOfKonten, Comparator.comparingDouble((KontoObject o) -> o.kontostand));
                 Collections.reverse(listOfKonten);
+                JOptionPane.showMessageDialog(null, "Konten wurden absteigend nach Kontostand sortiert! Bitte aktualisieren!", "Einzahlung erfolgt!", JOptionPane.INFORMATION_MESSAGE);
             }
         });
         einzahlenButton.addActionListener(new ActionListener() {

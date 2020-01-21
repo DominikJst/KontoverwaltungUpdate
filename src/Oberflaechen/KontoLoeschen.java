@@ -29,18 +29,27 @@ public class KontoLoeschen extends JFrame {
                 try {
                     int kontonummer = Integer.parseInt(kontonummerLoeschenFeld.getText());
                     String kontoname = kontonameLoeschenFeld.getText();
+                    int check = 0;
 
                     for (int i = 0; i < listOfKonten.size(); i++) {
 
                         if (kontonummer == listOfKonten.get(i).getKontonummer() && kontoname.equals(listOfKonten.get(i).getName())) {
 
+                            check = 1;
                             listOfKonten.remove(i);
                         }
                     }
-                    dispose();
+
+                    if(check == 1){
+                        JOptionPane.showMessageDialog(null, "Das Konto wurde gelöscht!", "Einzahlung erfolgt!", JOptionPane.INFORMATION_MESSAGE);
+                        dispose();
+                    }
+                    else{
+                        JOptionPane.showMessageDialog(null, "Das Konto existiert nicht!", "Warnung!", JOptionPane.WARNING_MESSAGE);
+                    }
+
                 } catch (Exception e) {
-                    JOptionPane.showMessageDialog(null, "Das Konto existiert nicht!", "Warnung!", JOptionPane.WARNING_MESSAGE);
-                    System.out.println(e);
+                    JOptionPane.showMessageDialog(null, "Bitte valide Eingaben treffen!", "Warnung!", JOptionPane.WARNING_MESSAGE);
                 }
             }
         });
